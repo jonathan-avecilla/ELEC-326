@@ -3,6 +3,10 @@ module doubleBCD_tb;  // Testbench program will exercise design with input test 
    reg [11:0] p;              // Test input BCD number
    wire [11:0] Q;            // Result
 
+   initial begin
+	   p = 12'b0;
+	end
+
    integer 	      i, j, k;
    
 doubleBCD test(p, Q);   
