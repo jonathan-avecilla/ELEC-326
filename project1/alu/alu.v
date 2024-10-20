@@ -113,6 +113,21 @@ always @(*) begin
 		endcase
 	end
 	
+	else if (subi_pi) begin
+		extended_result = {1'b0, reg1_data_pi} - {1'b0, immediate_extended};
+		alu_result_po = extended_result[15:0];
+		borrow_out_po = extended result[16];
+		end
+	else if (load_or_store_pi) begin
+		alu_result_po = reg1_data_pi + immediate_extended;
+		end
+	if (stc_cmd_pi) begin
+		carry_out_po = 1'b1;
+		end
+	if (stb_cmd_pi) begin
+		borrow_out_po = 1'b1;
+		end
+
 end
    
 
