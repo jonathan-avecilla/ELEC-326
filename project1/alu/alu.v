@@ -70,6 +70,9 @@ module alu (
 	output 	      borrow_out_po // Propagate borrow_in unless an arithmetic/STB instruction generates a new borrow
 );
 
+always @(*) begin
+
+end
    
 
 
