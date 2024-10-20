@@ -81,7 +81,9 @@ module decoder(
    // Use a series of assign statements to set the output signals.
    // You may (find it convenient to) define some auxiliary wire signals for compactness. 		
 
-
+	wire [3:0] opcode = instruction_pi[15:12];
+	wire [2:0] destination = instruction_pi[11:9];
+	wire [2:0] source1 = instruction_pi[8:6];
 
 
 
