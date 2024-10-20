@@ -92,9 +92,10 @@ module decoder(
 	assign source_reg2_po = source2;
 	assign immediate_po = immediate;
 	
-	assign alu_func_po = 
+	assign alu_func_po = (opcode == 'ARITH_2OP) ? instruction_pi[2:0] : (opcode == 'ARITH_1OP) instruction_pi[2:0] : 3'b000;
 
-
+	assign movi_lower_po = (opcode == 'MOVI && instruction_pi[8] == 1'b0);
+	assign movi_higher_po = (opcode == 'MOVI && instruction_pi[8] == 1'b1);
 
 
 endmodule // decoder
