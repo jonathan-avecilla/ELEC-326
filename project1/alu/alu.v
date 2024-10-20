@@ -70,8 +70,49 @@ module alu (
 	output 	      borrow_out_po // Propagate borrow_in unless an arithmetic/STB instruction generates a new borrow
 );
 
-always @(*) begin
+reg [16:0] extended_result;
+reg [15:0] immediate_extended;
 
+
+always @(*) begin
+	immediate_extended = {{10{immediate_pi[5]}}, immediate_pi};
+end
+
+always @(*) begin
+	carry_out_po = 0;
+	borrow_out_po = 0; 
+
+	if (arith_2op_pi) begin
+		case (alu_func_pi)
+			`ADD : begin
+				extended_result = {1'b0, reg1_data_pi} + {1'b0, reg2_data_pi};
+				alu_result_po = extended_result[15:0];
+				borrow_out_po = extended_result[16];
+				end
+			`SUB : begin
+				extended_result = {1'b0, reg1_data_pi} - {1'b0, reg2_data_pi};
+				alu_result_po = extended_result[15:0];
+				borrow_out_po = extended_result[16];
+				end
+			`SUBB : begin
+				extended_result = {1'b0, reg1_data_pi} - {1'b0, reg2_data_pi} - borrow_in_pi;
+				alu_result_po = extended_result[15:0];
+				borrow_out_po = extended_result[16];
+				end
+			default: alu_result_po = 16'h0000; //if the func code is invalid
+		endcase
+	end
+
+	else if (arith_1op_pi) begin
+		case (alu_func_pi)
+			`NOT: alu_result_po = ~reg1_data_pi;
+			`SHIFTL: alu_result_po = reg1_data_pi << 1;
+			`SHIFTR: alu_result_po = reg1_data_pi >> 1;
+			`CP: alu_result_po = reg1_data_pi;
+			default: alu_result_po = 16'h0000; // default if invalid
+		endcase
+	end
+	
 end
    
 
