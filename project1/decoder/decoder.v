@@ -84,9 +84,15 @@ module decoder(
 	wire [3:0] opcode = instruction_pi[15:12];
 	wire [2:0] destination = instruction_pi[11:9];
 	wire [2:0] source1 = instruction_pi[8:6];
+	wire [2:0] source2 = instruction_pi[5:3];
+	wire [11:0] immediate = instruction_pi[11:0];
 
-
-
+	assign destination_reg_po = destination;
+	assign source_reg1_po = source1;
+	assign source_reg2_po = source2;
+	assign immediate_po = immediate;
+	
+	assign alu_func_po = 
 
 
 
