@@ -92,23 +92,23 @@ module decoder(
 	assign source_reg2_po = source2;
 	assign immediate_po = immediate;
 	
-	assign alu_func_po = ((opcode == 'ARITH_2OP) || (opcode == `ARITH_1OP)) ? instruction_pi[2:0] : 3'b000);
+	assign alu_func_po = ((opcode == `ARITH_2OP) || (opcode == `ARITH_1OP)) ? instruction_pi[2:0] : 3'b000);
 	
-	assign arith_2op_po = (opcode == 'ARITH_2OP);
-	assign arith_1op_po = (opcode == 'ARITH_1OP);
-	assign movi_lower_po = ((opcode == 'MOVI) && (instruction_pi[8] == 1'b0));
-	assign movi_higher_po = ((opcode == 'MOVI) && (instruction_pi[8] == 1'b1));
-	assign addi_po = (opcode == 'ADDI);
-	assign subi_po = (opcode == 'SUBI);
-	assign load_po = (opcode == 'LOAD);
-	assign store_po = (opcode == 'STOR);
-	assign branch_eq_po = (opcode == 'BEQ);
-	assign branch_ge_po = (opcode == 'BGE);
-	assign branch_le_po = (opcode == 'BLE);
-	assign branch_carry_po = (opcode == 'BC);
-	assign jump_po = (opcode == 'J);
-	assign stc_cmd_po = (opcode == 'STC);
-	assign stb_cmd_po = (opcode == 'STB);
-	assign halt_cmd_po = (opcode == 'HALT);
-	assign rst_cmd_po = (opcode == 'RESET);
+	assign arith_2op_po = (opcode == `ARITH_2OP);
+	assign arith_1op_po = (opcode == `ARITH_1OP);
+	assign movi_lower_po = ((opcode == `MOVI) && (instruction_pi[8] == 1'b0));
+	assign movi_higher_po = ((opcode == `MOVI) && (instruction_pi[8] == 1'b1));
+	assign addi_po = (opcode == `ADDI);
+	assign subi_po = (opcode == `SUBI);
+	assign load_po = (opcode == `LOAD);
+	assign store_po = (opcode == `STOR);
+	assign branch_eq_po = (opcode == `BEQ);
+	assign branch_ge_po = (opcode == `BGE);
+	assign branch_le_po = (opcode == `BLE);
+	assign branch_carry_po = (opcode == `BC);
+	assign jump_po = (opcode == `J);
+	assign stc_cmd_po = ((opcode == `CONTROL) && (immediate == STC));
+	assign stb_cmd_po = ((opcode == `CONTROL) && (immediate  == `STB));
+	assign halt_cmd_po = ((opcode == `CONTROL) && (immediate  == `HALT));
+	assign rst_cmd_po = ((opcode == `CONTROL) && (immediate  == `RESET));
 endmodule // decoder
