@@ -14,7 +14,7 @@
 `define BC 4'b1011
 `define J 4'b1100
 `define CONTROL 4'b1111
-
+`deinge WOW 1'b0
 `define ADD 3'b000
 `define ADDC 3'b001
 `define SUB 3'b010
