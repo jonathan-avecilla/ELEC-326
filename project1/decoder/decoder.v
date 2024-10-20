@@ -88,8 +88,8 @@ module decoder(
 	wire [11:0] immediate = instruction_pi[11:0];
 
 	assign destination_reg_po = destination;
-	assign source_reg1_po = source1;
-	assign source_reg2_po = source2;
+	assign source_reg1_po = ((opcode == `BEQ) || (opcode == `BGE) || (opcode == `BLE) || (opcode == `BC)) ? destination : source1;
+	assign source_reg2_po = ((opcode == `BEQ) || (opcode == `BGE) || (opcode == `BLE) || (opcode == `BC)) ? source1 : source2;
 	assign immediate_po = immediate;
 	
 	assign alu_func_po[2:0] = instruction_pi[2:0];
