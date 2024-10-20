@@ -92,7 +92,7 @@ module decoder(
 	assign source_reg2_po = source2;
 	assign immediate_po = immediate;
 	
-	assign alu_func_po = ((opcode == `ARITH_2OP) || (opcode == `ARITH_1OP)) ? instruction_pi[2:0] : 3'b000);
+	assign alu_func_po = ((opcode == `ARITH_2OP) || (opcode == `ARITH_1OP)) ? instruction_pi[2:0] : 3'b000;
 	
 	assign arith_2op_po = (opcode == `ARITH_2OP);
 	assign arith_1op_po = (opcode == `ARITH_1OP);
