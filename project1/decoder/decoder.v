@@ -107,7 +107,7 @@ module decoder(
 	assign branch_le_po = (opcode == `BLE);
 	assign branch_carry_po = (opcode == `BC);
 	assign jump_po = (opcode == `J);
-	assign stc_cmd_po = ((opcode == `CONTROL) && (immediate == STC));
+	assign stc_cmd_po = ((opcode == `CONTROL) && (immediate == `STC));
 	assign stb_cmd_po = ((opcode == `CONTROL) && (immediate  == `STB));
 	assign halt_cmd_po = ((opcode == `CONTROL) && (immediate  == `HALT));
 	assign rst_cmd_po = ((opcode == `CONTROL) && (immediate  == `RESET));
