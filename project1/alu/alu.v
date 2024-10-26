@@ -89,6 +89,11 @@ always @(*) begin
 				alu_result_po = extended_result[15:0];
 				borrow_out_po = extended_result[16];
 				end
+			`ADDC : begin
+				extended_rsult = {1'b0, reg1_data_pi} + {1'b0, reg2_data_pi};
+				alu_result_po = extended_result[15:0];
+				carry_out_po = extended_result[16];
+				end
 			`SUB : begin
 				extended_result = {1'b0, reg1_data_pi} - {1'b0, reg2_data_pi};
 				alu_result_po = extended_result[15:0];
@@ -99,6 +104,10 @@ always @(*) begin
 				alu_result_po = extended_result[15:0];
 				borrow_out_po = extended_result[16];
 				end
+			`AND: alu_result_po = reg1_data_pi & reg2_data_pi;
+			`OR:  alu_result_po = reg1_data_pi | reg2_data_pi;
+			`XOR:  alu_result_po = reg1_data_pi | reg2_data_pi;
+			`XNOR: alu_result_po = ~(reg1_data_pi ^ reg2_data_pi);
 			default: alu_result_po = 16'h0000; //if the func code is invalid
 		endcase
 	end
@@ -112,7 +121,12 @@ always @(*) begin
 			default: alu_result_po = 16'h0000; // default if invalid
 		endcase
 	end
-	
+	else if (addi_pi) begin
+		extended_result = {1'b0, reg1_data_pi} + {1'b0, immediate_extended};
+		alu_result_po = extended_result[15:0];
+		carry_out_po = extended_result[16];
+		end	
+
 	else if (subi_pi) begin
 		extended_result = {1'b0, reg1_data_pi} - {1'b0, immediate_extended};
 		alu_result_po = extended_result[15:0];
