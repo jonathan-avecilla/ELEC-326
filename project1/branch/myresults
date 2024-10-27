@@ -1,0 +1,40 @@
+*************************************
+	No.	Instruction		Decoded Signals
+
+          0.	827f		7 1 1 1 1177	0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0
+
+		Branch Module Output --- isBranchTaken: z
+
+          1.	82be		6 1 1 2 1276	0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0
+
+		Branch Module Output --- isBranchTaken: z
+
+          2.	927f		7 1 1 1 1177	0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0
+
+		Branch Module Output --- isBranchTaken: z
+
+          3.	92be		6 1 1 2 1276	0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0
+
+		Branch Module Output --- isBranchTaken: z
+
+          4.	947e		6 2 2 1 2176	0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0
+
+		Branch Module Output --- isBranchTaken: z
+
+          5.	a27f		7 1 1 1 1177	0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0
+
+		Branch Module Output --- isBranchTaken: z
+
+          6.	a2be		6 1 1 2 1276	0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0
+
+		Branch Module Output --- isBranchTaken: z
+
+          7.	a47e		6 2 2 1 2176	0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0
+
+		Branch Module Output --- isBranchTaken: z
+
+          8.	b03f		7 0 0 0 0077	0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0
+
+		Branch Module Output --- isBranchTaken: z
+
+tb_branch.v:166: $finish called at 27 (1ns)
